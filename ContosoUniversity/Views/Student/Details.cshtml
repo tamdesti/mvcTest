@@ -1,0 +1,44 @@
+﻿@model ContosoUniversity.Models.Student
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Details</title>
+</head>
+<body>
+    <fieldset>
+        <legend>Student</legend>
+    
+        <div class="display-label">
+             @Html.DisplayNameFor(model => model.LastName)
+        </div>
+        <div class="display-field">
+            @Html.DisplayFor(model => model.LastName)
+        </div>
+    
+        <div class="display-label">
+             @Html.DisplayNameFor(model => model.FirstMidName)
+        </div>
+        <div class="display-field">
+            @Html.DisplayFor(model => model.FirstMidName)
+        </div>
+    
+        <div class="display-label">
+             @Html.DisplayNameFor(model => model.EnrollmentDate)
+        </div>
+        <div class="display-field">
+            @Html.DisplayFor(model => model.EnrollmentDate)
+        </div>
+    </fieldset>
+    <p>
+        @Html.ActionLink("Edit", "Edit", new { id=Model.ID }) |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+</body>
+</html>
