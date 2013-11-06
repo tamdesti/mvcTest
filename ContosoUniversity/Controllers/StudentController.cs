@@ -49,6 +49,7 @@ namespace ContosoUniversity.Controllers
             try
             {
                 // TODO: Add insert logic here
+                //student.FirstMidName = Server.HtmlEncode(student.FirstMidName);
                 var db = new SchoolContext();
                 db.Students.Add(student);
                 db.SaveChanges();

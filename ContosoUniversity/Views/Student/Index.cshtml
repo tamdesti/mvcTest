@@ -33,8 +33,9 @@
         <td>
             @Html.DisplayFor(modelItem => item.LastName)
         </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.FirstMidName)
+        <td>            
+            @Html.Raw(item.FirstMidName)
+            
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.EnrollmentDate)
