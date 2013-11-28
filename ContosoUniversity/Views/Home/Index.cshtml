@@ -1,3 +1,43 @@
 ﻿@{
     ViewBag.Title = "Home Page";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
+
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+    <link href="~/Content/flipclock.css" rel="stylesheet" />       
+
+</head>
+<body>          
+    <div class="your-clock" style="margin: 80px auto;"></div>      
+    @Scripts.Render("~/bundles/jquery")
+    <script src="~/Scripts/FlipClock/base.js"></script>
+    <script src="~/Scripts/FlipClock/flipclock.js"></script>    
+    <script src="~/Scripts/FlipClock/hourlycounter.js"></script>
+    <script type="text/javascript">
+        var clock;
+        $(document).ready(function () {
+            var clock;
+            var currentDate = new Date();
+
+            // Set some date in the future. In this case, it's always Jan 1
+            //var futureDate = new Date(currentDate.getFullYear() + 1, 0, 1);
+            var futureDate = new Date(currentDate.getFullYear(),currentDate.getMonth(),currentDate.getDate(),17);
+
+            // Calculate the difference in seconds between the future and current date
+            var diff = futureDate.getTime() / 1000 - currentDate.getTime() / 1000;
+
+            clock = $('.your-clock').FlipClock(diff, {
+                clockFace: 'HourlyCounter',
+                countdown: true                
+            });
+
+        });
+	</script>
+</body>
+</html>

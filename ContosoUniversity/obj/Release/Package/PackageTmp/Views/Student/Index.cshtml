@@ -1,0 +1,115 @@
+﻿@model IEnumerable<ContosoUniversity.Models.Student>
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+    @Styles.Render("~/Content/css")
+
+</head>
+<body>
+    <div>@Html.ActionLink("Create New","Create")</div>
+    <table id="studentTable">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.LastName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FirstName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.EnrollmentDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.BirthPlace)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model) {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.LastName)
+                </td>
+                <td>
+                    @Html.Raw(item.FirstName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.EnrollmentDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.BirthPlace)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
+                    @Html.ActionLink("Details", "Details", new { id=item.ID }) |
+                    @Html.ActionLink("Delete", "Delete", new { id=item.ID })
+                </td>
+            </tr>
+}
+        <div class="fadein">
+            <img width="200" height="200" src="~/Images/DSC00560.JPG" style="position: absolute; top: 0px; left: 0px; display: block; z-index: 6; opacity: 1; width: 200px; height: 200px;">
+            <img width="200" height="200" src="~/Images/DSC00561.JPG" style="position: absolute; top: 0px; left: 0px; display: none; z-index: 6; opacity: 1; width: 200px; height: 200px;">
+            <img width="200" height="200" src="~/Images/DSC00562.JPG" style="position: absolute; top: 0px; left: 0px; display: none; z-index: 6; opacity: 1; width: 200px; height: 200px;">
+            <img width="200" height="200" src="~/Images/DSC00563.JPG" style="position: absolute; top: 0px; left: 0px; display: none; z-index: 6; opacity: 1; width: 200px; height: 200px;">
+            <img width="200" height="200" src="~/Images/DSC00564.JPG" style="position: absolute; top: 0px; left: 0px; display: none; z-index: 6; opacity: 1; width: 200px; height: 200px;">
+            <img width="200" height="200" src="~/Images/DSC00565.JPG" style="position: absolute; top: 0px; left: 0px; display: none; z-index: 6; opacity: 1; width: 200px; height: 200px;">
+        </div>
+        @Scripts.Render("~/bundles/jquery")
+        <script type="text/javascript" src="http://malsup.github.com/chili-1.7.pack.js"></script>
+        <script type="text/javascript" src="http://malsup.github.com/jquery.cycle.all.js"></script>
+        <script type="text/javascript" src="http://malsup.github.com/jquery.easing.1.3.js"></script>
+        <script type="text/javascript">
+            $(function () {
+                setInterval(function () {
+                    var number = Math.floor((Math.random() * 5) + 1);
+                    //switch (number)
+                    //{
+                    //    case 1:
+                    //            $('.fadein').cycle({
+                    //            fx: 'turnDown',
+                    //            delay: -4000
+                    //});
+                    //        break;
+                    //    case 2:
+                    //        $('.fadein').cycle({
+                    //            fx: 'curtainX',
+                    //            sync: false,
+                    //            delay: -2000
+                    //        });
+                    //        break;
+                    //    case 3:
+                    //        $('.fadein').cycle({
+                    //            fx: 'shuffle',
+                    //            easing: 'easeOutBack',
+                    //            delay: -4000
+                    //        });
+                    //        break;
+                    //    case 4:
+                    //        $('.fadein').cycle();
+                    //        break;
+                    //    case 5:
+                    //        $('.fadein').cycle({
+                    //            fx: 'curtainX',
+                    //            sync: false,
+                    //            delay: -2000
+                    //        });
+                    //        break;
+                    //    }
+                    $('.fadein').cycle({
+                        fx: 'turnDown',
+                        delay: -10000
+                    });
+                    $('.fadein :first-child').appendTo('.fadein');
+                },
+                  1000);
+            });
+        </script>
+</body>
+</html>

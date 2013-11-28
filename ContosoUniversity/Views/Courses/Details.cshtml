@@ -1,0 +1,26 @@
+@model ContosoUniversity.Models.Course
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>Course</legend>
+
+    <div class="display-label">Title</div>
+    <div class="display-field">@Model.Title</div>
+
+    <div class="display-label">Credits</div>
+    <div class="display-field">@Model.Credits</div>
+
+    <div class="display-label">Enrollments</div>
+    <div class="display-field">@(Model.Enrollments == null ? "None" : Model.Enrollments.Count.ToString())</div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id=Model.CourseID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
+
+

@@ -1,0 +1,86 @@
+﻿@{
+    ViewBag.Title = "Slicebox";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    //Layout = null;
+}
+<link href="~/Content/Slicebox/demo.css" rel="stylesheet" />
+<link href="~/Content/Slicebox/slicebox.css" rel="stylesheet" />
+<link href="~/Content/Slicebox/custom.css" rel="stylesheet" />
+<script src="~/Scripts/Slicebox/modernizr.custom.46884.js"></script>
+<div style="margin-top:40px;">
+<div class="wrapper">
+    <ul id="sb-slider" class="sb-slider">
+        @{DirectoryInfo directory = new DirectoryInfo(Server.MapPath(@"~\Images\Slicebox"));
+            var files = directory.GetFiles().ToList();                
+            foreach(FileInfo f in files)
+            {
+                <li>
+	                <img src="../Images/Slicebox/@f.Name"/>
+		            <div class="sb-description">                            
+		                <h3>Creative Lifesaver</h3>
+		            </div>
+	            </li>
+            }        
+        }
+    </ul>					
+    <div id="shadow" class="shadow"></div>
+    <div id="nav-arrows" class="nav-arrows">
+        <a href="#">Next</a>
+	    <a href="#">Previous</a>
+    </div>
+</div>
+    </div>
+@Scripts.Render("~/bundles/jquery")
+
+<script src="~/Scripts/Slicebox/jquery.slicebox.js"></script>
+<script type="text/javascript">
+    $(function () {
+
+        var Page = (function () {
+
+            var $navArrows = $('#nav-arrows').hide(),
+                $shadow = $('#shadow').hide(),
+                slicebox = $('#sb-slider').slicebox({
+                    onReady: function () {
+
+                        $navArrows.show();
+                        $shadow.show();
+
+                    },
+                    orientation: 'r',
+                    cuboidsRandom: true,
+                    disperseFactor: 30
+                }),
+
+                init = function () {
+
+                    initEvents();
+
+                },
+                initEvents = function () {
+
+                    // add navigation events
+                    $navArrows.children(':first').on('click', function () {
+
+                        slicebox.next();
+                        return false;
+
+                    });
+
+                    $navArrows.children(':last').on('click', function () {
+
+                        slicebox.previous();
+                        return false;
+
+                    });
+
+                };
+
+            return { init: init };
+
+        })();
+
+        Page.init();
+
+    });
+		</script>

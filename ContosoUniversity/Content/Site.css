@@ -781,4 +781,29 @@ tr.pager td {
     }
 
 
-   
+.fadein { position: relative; overflow: visible;  height: 232px; width: 232px; margin: 0 auto;}
+.fadein img {display: none;
+    height: 200px;
+    left: 0;
+    opacity: 1;
+    position: absolute;
+    top: 0;
+    width: 200px;
+    z-index: 4;}
+ul.nav {
+    list-style-type: none;
+}
+    ul.nav li {
+        float:left;
+        color: #2C1D00;
+        display: inline-block;
+        font-family: "Myriad Pro";
+        font-size: 14px;
+        font-weight: bold;
+        height: 35px;
+        line-height: 35px;
+        padding: 0 20px;
+        text-align: center;
+        text-decoration: none;
+        width: 67px;
+    }

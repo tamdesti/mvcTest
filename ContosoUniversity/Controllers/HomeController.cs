@@ -15,21 +15,22 @@ namespace ContosoUniversity.Controllers
 
         public ActionResult Index()
         {
-            return View(db.Students.ToList());
+            return View();
         }
-
-        [HttpPost]
+        
         public ActionResult About(Models.Student student)
-        {
-            if (ModelState.IsValid)
-            {
-                var db = new SchoolContext();
-                db.Students.Add(student);
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
+        {            
             return View();
         }
 
+        public ActionResult Slicebox()
+        {
+            return View();
+        }
+
+        public ActionResult Carousel()
+        {
+            return View();
+        }
     }
 }

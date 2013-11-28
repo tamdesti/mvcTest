@@ -1,0 +1,77 @@
+@model IEnumerable<ContosoUniversity.Models.Course>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = null;
+}
+<header>
+    @Styles.Render("~/Content/css")
+    <link href="~/Content/flipclock.css" rel="stylesheet" />
+</header>
+<body>
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table>
+    <tr>
+        <th></th>
+        <th>
+            Title
+        </th>
+        <th>
+            Credits
+        </th>
+        <th>
+            Enrollments
+        </th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.CourseID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.CourseID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.CourseID })
+        </td>
+        <td>
+			@item.Title
+        </td>
+        <td>
+			@item.Credits
+        </td>
+        <td>
+			@(item.Enrollments == null ? "None" : item.Enrollments.Count.ToString())
+        </td>
+    </tr>
+}
+
+</table>
+
+    <div class="your-clock"></div> 
+    @Scripts.Render("~/bundles/jquery")    
+    <script src="~/Scripts/base.js"></script>
+    <script src="~/Scripts/flipclock.js"></script>
+    <script src="~/Scripts/dailycounter.js"></script>
+    <script type="text/javascript">
+        var clock;
+        $(document).ready(function () {
+            var clock;
+            var currentDate = new Date();
+
+            // Set some date in the future. In this case, it's always Jan 1
+            //var futureDate = new Date(currentDate.getFullYear() + 1, 0, 1);
+            var futureDate = new Date(2013,10,27,17,0,0,0);
+
+            // Calculate the difference in seconds between the future and current date
+            var diff = futureDate.getTime() / 1000 - currentDate.getTime() / 1000;
+
+            clock = $('.your-clock').FlipClock(diff, {
+                clockFace: 'DailyCounter',
+                countdown: true                
+            });
+
+        });
+	</script>
+</body>

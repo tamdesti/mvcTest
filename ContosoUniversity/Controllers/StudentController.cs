@@ -84,7 +84,7 @@ namespace ContosoUniversity.Controllers
                 // TODO: Add update logic here
                 var db = new SchoolContext();
                 Student student1 = db.Students.Find(id);
-                student1.FirstMidName = student.FirstMidName;
+                student1.FirstName = student.FirstName;
                 student1.EnrollmentDate = student.EnrollmentDate;
                 student1.LastName = student.LastName;
                 db.SaveChanges();
